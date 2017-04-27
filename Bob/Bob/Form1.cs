@@ -120,6 +120,13 @@ namespace Bob
                     synthesizer.SpeakAsync("Opening Google");
                     System.Diagnostics.Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe");
                     break;
+
+                case "Who are you":
+                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
+                    richTextBox1.Text += "\nBoB: I am BoB a speech recognition system programmed in C#";
+                    richTextBox1.Text += "\n";
+                    synthesizer.SpeakAsync("I am BoB a speech recognition system programmed in c sharp");
+                    break;
             }
         }
     }
