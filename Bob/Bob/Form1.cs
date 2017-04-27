@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Speech.Recognition;
 using System.Speech.Synthesis;
-using Microsoft.VisualBasic;
 
 namespace Bob
 {
@@ -55,7 +47,7 @@ namespace Bob
         {
             // Setting Choices and Grammar Builder
             Choices commands = new Choices();
-            commands.Add(new string[] { "Say hello", "Whats my name", "What are you", "Who is the worst", "Who are you", "What's the time", "Open google"});
+            commands.Add(new string[] { "Say hello", "Whats my name", "What are you", "Who is the worst", "Who are you", "What's the time", "Open google", "Will Hellewell", "Why are u so dumb"});
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
             Grammar grammar = new Grammar(gBuilder);
@@ -96,7 +88,7 @@ namespace Bob
                     richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
                     richTextBox1.Text += "\nBoB: I am a Speech Recognition system programmed in C#";
                     richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("I am a Speech Recognition system programmed in C sharp by Jamie Coulson");
+                    synthesizer.SpeakAsync("I am a Speech Recognition system programmed in C sharp");
                     break;
 
                 case "Who is the worst":
@@ -126,6 +118,20 @@ namespace Bob
                     richTextBox1.Text += "\nBoB: I am BoB a speech recognition system programmed in C#";
                     richTextBox1.Text += "\n";
                     synthesizer.SpeakAsync("I am BoB a speech recognition system programmed in c sharp");
+                    break;
+
+                case "Will Hellewell":
+                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
+                    richTextBox1.Text += "\nBoB: Sick Radical dabs";
+                    richTextBox1.Text += "\n";
+                    synthesizer.SpeakAsync("Sick radical dabs");
+                    break;
+
+                case "Why are you so dumb":
+                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
+                    richTextBox1.Text += "\nBoB: Im only as smart as the person that made me";
+                    richTextBox1.Text += "\n";
+                    synthesizer.SpeakAsync("Im only as smart as the person that made me");
                     break;
             }
         }
