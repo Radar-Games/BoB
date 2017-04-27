@@ -47,7 +47,7 @@ namespace Bob
         {
             // Setting Choices and Grammar Builder
             Choices commands = new Choices();
-            commands.Add(new string[] { "Say hello", "Whats my name", "What are you", "Who is the worst", "Who are you", "What's the time", "Open google", "Will Hellewell", "Why are u so dumb"});
+            commands.Add(new string[] { "Say hello", "Whats my name", "What are you", "Who is the worst", "Who are you", "What's the time", "Open google", "Will Hellewell", "Why are you so dumb"});
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
             Grammar grammar = new Grammar(gBuilder);
@@ -56,6 +56,7 @@ namespace Bob
             recEngine.LoadGrammarAsync(grammar);
             recEngine.SetInputToDefaultAudioDevice();
             recEngine.SpeechRecognized += recEngine_SpeechRecognized;
+            synthesizer.Volume = 100;
 
             // Misc
             richTextBox1.Text += "\n";
