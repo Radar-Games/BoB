@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Bob
+﻿namespace BobbyBoy
 {
-    partial class Spotify
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -37,9 +35,10 @@ namespace Bob
             // 
             // btnEnable
             // 
-            this.btnEnable.Location = new System.Drawing.Point(12, 207);
+            this.btnEnable.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEnable.Location = new System.Drawing.Point(12, 230);
             this.btnEnable.Name = "btnEnable";
-            this.btnEnable.Size = new System.Drawing.Size(121, 23);
+            this.btnEnable.Size = new System.Drawing.Size(75, 23);
             this.btnEnable.TabIndex = 0;
             this.btnEnable.Text = "Enable Voice Control";
             this.btnEnable.UseVisualStyleBackColor = true;
@@ -47,10 +46,9 @@ namespace Bob
             // 
             // btnDisable
             // 
-            this.btnDisable.Enabled = false;
-            this.btnDisable.Location = new System.Drawing.Point(139, 207);
+            this.btnDisable.Location = new System.Drawing.Point(197, 230);
             this.btnDisable.Name = "btnDisable";
-            this.btnDisable.Size = new System.Drawing.Size(133, 23);
+            this.btnDisable.Size = new System.Drawing.Size(75, 23);
             this.btnDisable.TabIndex = 1;
             this.btnDisable.Text = "Disable Voice Control";
             this.btnDisable.UseVisualStyleBackColor = true;
@@ -60,27 +58,25 @@ namespace Bob
             // 
             this.richTextBox1.Location = new System.Drawing.Point(12, 12);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(260, 189);
+            this.richTextBox1.Size = new System.Drawing.Size(260, 212);
             this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "- LOG -";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.richTextBox1.Text = "- Log -";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.textLog_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 257);
+            this.ClientSize = new System.Drawing.Size(284, 265);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnDisable);
             this.Controls.Add(this.btnEnable);
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BoB";
+            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
-
 
         #endregion
 
