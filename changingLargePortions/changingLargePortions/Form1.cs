@@ -26,8 +26,8 @@ namespace BobbyBoy
         public bool greeted = false;
         public bool greeted1 = false;
 
-    // Important Shit
-    string time = DateTime.Now.ToString("hh:mm tt");
+        // Important Shit
+        string time = DateTime.Now.ToString("hh:mm tt");
 
         public Form1()
         {
@@ -51,7 +51,7 @@ namespace BobbyBoy
 
         private void textLog_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnEnable_Click(object sender, EventArgs e)
@@ -113,7 +113,7 @@ namespace BobbyBoy
                     break;
 
                 case "I'm good":
-                    if(greeted == true)
+                    if (greeted == true)
                         richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
                     if (greeted == true)
                         richTextBox1.Text += "\nBoB: That's good";
@@ -121,7 +121,7 @@ namespace BobbyBoy
                         richTextBox1.Text += "\n";
                     if (greeted == true)
                         synthesizer.SpeakAsync("That's good");
-                        break;
+                    break;
 
                 case "How are you":
                     if (greeted1 == true)
@@ -132,15 +132,15 @@ namespace BobbyBoy
                         richTextBox1.Text += "\n";
                     if (greeted1 == true)
                         synthesizer.SpeakAsync("I'm a computer not a human, I don't have emotions");
-                        break;
-                   
+                    break;
+
                 case "Bob":
                     richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
                     richTextBox1.Text += "\nBoB: Yes";
                     richTextBox1.Text += "\n";
                     synthesizer.SpeakAsync("Yes");
                     break;
-                      
+
                 case "Why is dad so annoying":
                     richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
                     richTextBox1.Text += "\nBoB: Because he is stupid";
@@ -161,9 +161,9 @@ namespace BobbyBoy
                     richTextBox1.Text += "\n";
                     synthesizer.SpeakAsync("An idiot");
                     break;
-                
 
-                
+
+
 
                 case "Whats my name":
                     richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
@@ -265,3 +265,4 @@ namespace BobbyBoy
         }
     }
 }
+
