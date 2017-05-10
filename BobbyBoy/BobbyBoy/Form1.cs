@@ -79,7 +79,7 @@ namespace BobbyBoy
         {
             // Setting Choices and Grammar Builder
             Choices commands = new Choices();
-            commands.Add(new string[] { "Hello Bob", "I'm good", "How are you", "Bob", "Why is dad so annoying", "Why can't everyone be as awesome as me", "Whats my name", "What is Jak", "What are you", "Who is the worst", "Who are you", "What's the time", "Open Google", "Will Hellewell", "Why are you so dumb", "Say hello to Eloise", "Isn't it bob", "What songs playing", "Close Google", "Open Steam", "Close Steam" });
+            commands.Add(new string[] { "Hello", "I'm good", "How are you", "Bob", "Why is dad so annoying", "Why can't everyone be as awesome as me", "Whats my name", "What is Jak", "What are you", "Who is the worst", "Who are you", "What's the time", "Open Google", "Will Hellewell", "Why are you so dumb", "Say hello to Eloise", "Isn't it bob", "What songs playing", "Close Google", "Open Steam", "Close Steam" });
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
             Grammar grammar = new Grammar(gBuilder);
@@ -103,7 +103,7 @@ namespace BobbyBoy
             switch (e.Result.Text)
             {
                 // Speech Recognition
-                case "Hello Bob":
+                case "Hello":
                     responces.helloBob();
                     break;
 
