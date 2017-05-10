@@ -82,7 +82,7 @@
 
         private System.Windows.Forms.Button btnEnable;
         private System.Windows.Forms.Button btnDisable;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        public System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

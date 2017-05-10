@@ -16,18 +16,19 @@ namespace BobbyBoy
     public partial class Form1 : Form
     {
         // Engines
-        SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
-        SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+        public SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
+        public SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+        Class1 responces = new Class1();
 
         // Personal Variables
-        string userName = "Jamie";
+        public string userName = "Jamie";
 
         // Communication Variables
         public bool greeted = false;
         public bool greeted1 = false;
 
-    // Important Shit
-    string time = DateTime.Now.ToString("hh:mm tt");
+        // Important Shit
+        string time = DateTime.Now.ToString("hh:mm tt");
 
         public Form1()
         {
@@ -93,6 +94,7 @@ namespace BobbyBoy
             richTextBox1.Text += "\n";
             btnDisable.Enabled = true;
 
+
             // Testing
         }
 
@@ -102,14 +104,7 @@ namespace BobbyBoy
             {
                 // Speech Recognition
                 case "Hello Bob":
-                    // Console
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Hello " + userName + ". How are you";
-                    richTextBox1.Text += "\n";
-                    // Synthesize
-                    synthesizer.SpeakAsync("Hello  " + userName + " How are you?");
-                    // Varibles
-                    greeted = true;
+                    responces.helloBob();
                     break;
 
                 case "I'm good":
