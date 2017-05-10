@@ -58,4 +58,44 @@ public class Class1
             j.greeted1 = false;
         }
     }
+
+    public void okBoB()
+    {
+        // Console
+        j.richTextBox1.Text += "\n" + j.userName + ": " + "Ok BoB";
+        j.richTextBox1.Text += "\nBoB: Yes";
+        j.richTextBox1.Text += "\n";
+        // Synthesize
+        j.synthesizer.SpeakAsync("Yes");
+    }
+
+    public void whyIsDadSoAnnoying()
+    {
+        // Console
+        j.richTextBox1.Text += "\n" + j.userName + ": " + "Why is dad so annoying";
+        j.richTextBox1.Text += "\nBoB: Because he is stupid";
+        j.richTextBox1.Text += "\n";
+        // Synthesize
+        j.synthesizer.SpeakAsync("because he is stupid");
+    }
+
+    public void whatIsJak()
+    {
+        // Console
+        j.richTextBox1.Text += "\n" + j.userName + ": " + "What is Jak";
+        j.richTextBox1.Text += "\nBoB: An idiot";
+        j.richTextBox1.Text += "\n";
+        // Synthesize
+        j.synthesizer.SpeakAsync("An idiot");
+    }
+
+    public void whatsMyName()
+    {
+        // Console
+        j.richTextBox1.Text += "\n" + j.userName + ": " + "What's my name";
+        j.richTextBox1.Text += "\nBoB: Jamie";
+        j.richTextBox1.Text += "\n";
+        // Synthesize
+        j.synthesizer.SpeakAsync("Jamie");
+    }
 }

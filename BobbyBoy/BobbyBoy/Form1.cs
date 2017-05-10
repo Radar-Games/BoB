@@ -79,7 +79,7 @@ namespace BobbyBoy
         {
             // Setting Choices and Grammar Builder
             Choices commands = new Choices();
-            commands.Add(new string[] { "Hello", "I'm good", "How are you", "Bob", "Why is dad so annoying", "Why can't everyone be as awesome as me", "Whats my name", "What is Jak", "What are you", "Who is the worst", "Who are you", "What's the time", "Open Google", "Will Hellewell", "Why are you so dumb", "Say hello to Eloise", "Isn't it bob", "What songs playing", "Close Google", "Open Steam", "Close Steam" });
+            commands.Add(new string[] { "Hello", "I'm good", "How are you", "Ok Bob", "Why is dad so annoying", "Whats my name", "What is Jak", "What are you", "Who is the worst", "Who are you", "What's the time", "Open Google", "Will Hellewell", "Why are you so dumb", "Say hello to Eloise", "Isn't it bob", "What songs playing", "Close Google", "Open Steam", "Close Steam" });
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
             Grammar grammar = new Grammar(gBuilder);
@@ -115,42 +115,20 @@ namespace BobbyBoy
                     responces.howAreYou();
                     break;
                    
-                case "Bob":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Yes";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("Yes");
+                case "Ok Bob":
+                    responces.okBoB();
                     break;
                       
                 case "Why is dad so annoying":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Because he is stupid";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("because he is stupid");
-                    break;
-
-                case "Why can't everyone be as awesome as me":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Because they aren't you";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("because they aren't you");
+                    responces.whyIsDadSoAnnoying();
                     break;
 
                 case "What is Jak":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: An idiot";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("An idiot");
+                    responces.whatIsJak();
                     break;
-                
-
-                
 
                 case "Whats my name":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Jamie";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("Jamie");
+                    responces.whatsMyName();
                     break;
 
                 case "What are you":
