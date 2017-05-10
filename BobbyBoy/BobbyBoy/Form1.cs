@@ -28,7 +28,12 @@ namespace BobbyBoy
         public bool greeted1 = false;
 
         // Important Shit
-        string time = DateTime.Now.ToString("hh:mm tt");
+        public string time = DateTime.Now.ToString("hh:mm tt");
+
+        // Declaring Arrays
+        public string[,] apps = new string[2,10];
+
+
 
         public Form1()
         {
@@ -79,7 +84,7 @@ namespace BobbyBoy
         {
             // Setting Choices and Grammar Builder
             Choices commands = new Choices();
-            commands.Add(new string[] { "Hello", "I'm good", "How are you", "Ok Bob", "Why is dad so annoying", "Whats my name", "What is Jak", "What are you", "Who is the worst", "Who are you", "What's the time", "Open Google", "Will Hellewell", "Why are you so dumb", "Say hello to Eloise", "Isn't it bob", "What songs playing", "Close Google", "Open Steam", "Close Steam" });
+            commands.Add(new string[] { "Hello", "I'm good", "How are you", "Ok Bob", "Why is dad so annoying", "Whats my name", "What is Jak", "What are you", "Who are you", "What's the time", "Open Google", "Will Hellewell", "Why are you so dumb", "Say hello to Eloise", "Isn't it bob", "What songs playing", "Close Google", "Open Steam", "Close Steam" });
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
             Grammar grammar = new Grammar(gBuilder);
@@ -132,24 +137,11 @@ namespace BobbyBoy
                     break;
 
                 case "What are you":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: I am a Speech Recognition system programmed in C#";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("I am a Speech Recognition system programmed in C sharp");
-                    break;
-
-                case "Who is the worst":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Scotty Dunc dad";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("Scotty Dunk Dad");
+                    responces.whatAreYou();
                     break;
 
                 case "What's the time":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: " + time;
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync(time);
+                    responces.whatsTheTime();
                     break;
 
                 case "Open Google":

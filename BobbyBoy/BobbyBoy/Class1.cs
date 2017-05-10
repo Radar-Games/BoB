@@ -98,4 +98,24 @@ public class Class1
         // Synthesize
         j.synthesizer.SpeakAsync("Jamie");
     }
+
+    public void whatAreYou()
+    {
+        // Console
+        j.richTextBox1.Text += "\n" + j.userName + ": " + "What are you";
+        j.richTextBox1.Text += "\nBoB: I am a Speech Recognition system programmed in C#";
+        j.richTextBox1.Text += "\n";
+        // Synthesize
+        j.synthesizer.SpeakAsync("I am a Speech Recognition system programmed in C sharp");
+    }
+
+    public void whatsTheTime()
+    {
+        j.richTextBox1.Text += "\n" + j.userName + ": " + "What's the time";
+        j.richTextBox1.Text += "\nBoB: " + j.time;
+        j.richTextBox1.Text += "\n";
+        j.synthesizer.SpeakAsync(j.time);
+    }
+
+    public void 
 }
