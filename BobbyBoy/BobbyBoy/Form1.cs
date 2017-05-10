@@ -108,26 +108,12 @@ namespace BobbyBoy
                     break;
 
                 case "I'm good":
-                    if(greeted == true)
-                        richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    if (greeted == true)
-                        richTextBox1.Text += "\nBoB: That's good";
-                    if (greeted == true)
-                        richTextBox1.Text += "\n";
-                    if (greeted == true)
-                        synthesizer.SpeakAsync("That's good");
-                        break;
+                    responces.imGood();
+                    break;
 
                 case "How are you":
-                    if (greeted1 == true)
-                        richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    if (greeted1 == true)
-                        richTextBox1.Text += "\nBoB: I'm a computer not a human, I don't have emotions";
-                    if (greeted1 == true)
-                        richTextBox1.Text += "\n";
-                    if (greeted1 == true)
-                        synthesizer.SpeakAsync("I'm a computer not a human, I don't have emotions");
-                        break;
+                    responces.howAreYou();
+                    break;
                    
                 case "Bob":
                     richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;

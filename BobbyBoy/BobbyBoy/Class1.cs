@@ -18,12 +18,44 @@ public class Class1
 	public void helloBob()
 	{
         // Console
-        j.richTextBox1.Text += "\n" + j.userName + ": Hello BoB";
+        j.richTextBox1.Text += "\n" + j.userName + ": Hello";
         j.richTextBox1.Text += "\nBoB: Hello " + j.userName + ". How are you";
         j.richTextBox1.Text += "\n";
         // Synthesize
         j.synthesizer.SpeakAsync("Hello  " + j.userName + " How are you?");
-        // Varibles
+        // Activating Varibles
         j.greeted = true;
+    }
+
+    public void imGood()
+    {
+        if(j.greeted == true)
+        {
+            // Console
+            j.richTextBox1.Text += "\n" + j.userName + ": " + "I'm Good";
+            j.richTextBox1.Text += "\nBoB: That's good";
+            j.richTextBox1.Text += "\n";
+            // Synthesize
+            j.synthesizer.SpeakAsync("That's good");
+            // Activating Variables
+            j.greeted1 = true;
+            // Deacivating Variables
+            j.greeted = false;
+        }
+    }
+
+    public void howAreYou()
+    {
+        if(j.greeted1 == true)
+        {
+            // Console 
+            j.richTextBox1.Text += "\n" + j.userName + ": " + "How are you";
+            j.richTextBox1.Text += "\nBoB: I'm a computer not a human, I don't have emotions";
+            j.richTextBox1.Text += "\n";
+            // Synthesize
+            j.synthesizer.SpeakAsync("I'm a computer not a human, I don't have emotions");
+            // Deactivating Variables
+            j.greeted1 = false;
+        }
     }
 }
