@@ -14,13 +14,11 @@ using System.Speech.Synthesis;
 
 public class Class1
 {
-    BobbyBoy.Form1 mainForm = (BobbyBoy.Form1)Application.OpenForms[0];
-
-    public void helloBob()
+    BobbyBoy.Form1 j = new BobbyBoy.Form1();
+	public void helloBob()
 	{
-        BobbyBoy.Form1 mainForm = (BobbyBoy.Form1)Application.OpenForms[0];
         // Console
-        richTextBox1.Text += "\n" + j.userName + ": Hello";
+        j.richTextBox1.Text += "\n" + j.userName + ": Hello";
         j.richTextBox1.Text += "\nBoB: Hello " + j.userName + ". How are you";
         j.richTextBox1.Text += "\n";
         // Synthesize

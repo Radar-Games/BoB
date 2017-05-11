@@ -55,12 +55,12 @@ namespace BobbyBoy
             }
         }
 
-        private void textLog_TextChanged(object sender, EventArgs e)
+        public void textLog_TextChanged(object sender, EventArgs e)
         {
             
         }
 
-        private void btnEnable_Click(object sender, EventArgs e)
+        public void btnEnable_Click(object sender, EventArgs e)
         {
             recEngine.RecognizeAsync(RecognizeMode.Multiple);
             btnDisable.Enabled = true;
@@ -70,7 +70,7 @@ namespace BobbyBoy
             synthesizer.SpeakAsync("Hey");
         }
 
-        private void btnDisable_Click(object sender, EventArgs e)
+        public void btnDisable_Click(object sender, EventArgs e)
         {
             recEngine.RecognizeAsyncStop();
             btnDisable.Enabled = false;
@@ -80,7 +80,7 @@ namespace BobbyBoy
             synthesizer.SpeakAsync("Bye");
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
             // Setting Choices and Grammar Builder
             Choices commands = new Choices();
@@ -103,12 +103,12 @@ namespace BobbyBoy
             // Testing
         }
 
-        private void recEngine_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        public void recEngine_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
             switch (e.Result.Text)
             {
                 // Speech Recognition
-                case "Hello":
+                /*case "Hello":
                     responces.helloBob();
                     break;
 
@@ -142,7 +142,7 @@ namespace BobbyBoy
 
                 case "What's the time":
                     responces.whatsTheTime();
-                    break;
+                    break;*/
 
                 case "Open Google":
                     richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
