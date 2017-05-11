@@ -18,7 +18,6 @@ public class Class1
 
     public void helloBob()
 	{
-        BobbyBoy.Form1 mainForm = (BobbyBoy.Form1)Application.OpenForms[0];
         // Console
         richTextBox1.Text += "\n" + j.userName + ": Hello";
         j.richTextBox1.Text += "\nBoB: Hello " + j.userName + ". How are you";
