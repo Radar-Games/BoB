@@ -14,107 +14,105 @@ using System.Speech.Synthesis;
 
 public class Class1
 {
-    BobbyBoy.Form1 mainForm = (BobbyBoy.Form1)Application.OpenForms[0];
-
     public void helloBob()
 	{
         // Console
-        richTextBox1.Text += "\n" + j.userName + ": Hello";
-        j.richTextBox1.Text += "\nBoB: Hello " + j.userName + ". How are you";
-        j.richTextBox1.Text += "\n";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Hello";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Hello " + BobbyBoy.Form1._Form1.userName + ". How are you";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
-        j.synthesizer.SpeakAsync("Hello  " + j.userName + " How are you?");
+        BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Hello  " + BobbyBoy.Form1._Form1.userName + " How are you?");
         // Activating Varibles
-        j.greeted = true;
+        BobbyBoy.Form1._Form1.greeted = true;
     }
 
     public void imGood()
     {
-        if(j.greeted == true)
+        if(BobbyBoy.Form1._Form1.greeted == true)
         {
             // Console
-            j.richTextBox1.Text += "\n" + j.userName + ": " + "I'm Good";
-            j.richTextBox1.Text += "\nBoB: That's good";
-            j.richTextBox1.Text += "\n";
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": " + "I'm Good";
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: That's good";
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
             // Synthesize
-            j.synthesizer.SpeakAsync("That's good");
+            BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("That's good");
             // Activating Variables
-            j.greeted1 = true;
+            BobbyBoy.Form1._Form1.greeted1 = true;
             // Deacivating Variables
-            j.greeted = false;
+            BobbyBoy.Form1._Form1.greeted = false;
         }
     }
 
     public void howAreYou()
     {
-        if(j.greeted1 == true)
+        if(BobbyBoy.Form1._Form1.greeted1 == true)
         {
             // Console 
-            j.richTextBox1.Text += "\n" + j.userName + ": " + "How are you";
-            j.richTextBox1.Text += "\nBoB: I'm a computer not a human, I don't have emotions";
-            j.richTextBox1.Text += "\n";
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": " + "How are you";
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: I'm a computer not a human, I don't have emotions";
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
             // Synthesize
-            j.synthesizer.SpeakAsync("I'm a computer not a human, I don't have emotions");
+            BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("I'm a computer not a human, I don't have emotions");
             // Deactivating Variables
-            j.greeted1 = false;
+            BobbyBoy.Form1._Form1.greeted1 = false;
         }
     }
 
     public void okBoB()
     {
         // Console
-        j.richTextBox1.Text += "\n" + j.userName + ": " + "Ok BoB";
-        j.richTextBox1.Text += "\nBoB: Yes";
-        j.richTextBox1.Text += "\n";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": " + "Ok BoB";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Yes";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
-        j.synthesizer.SpeakAsync("Yes");
+        BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Yes");
     }
 
     public void whyIsDadSoAnnoying()
     {
         // Console
-        j.richTextBox1.Text += "\n" + j.userName + ": " + "Why is dad so annoying";
-        j.richTextBox1.Text += "\nBoB: Because he is stupid";
-        j.richTextBox1.Text += "\n";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": " + "Why is dad so annoying";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Because he is stupid";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
-        j.synthesizer.SpeakAsync("because he is stupid");
+        BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("because he is stupid");
     }
 
     public void whatIsJak()
     {
         // Console
-        j.richTextBox1.Text += "\n" + j.userName + ": " + "What is Jak";
-        j.richTextBox1.Text += "\nBoB: An idiot";
-        j.richTextBox1.Text += "\n";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": " + "What is Jak";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: An idiot";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
-        j.synthesizer.SpeakAsync("An idiot");
+        BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("An idiot");
     }
 
     public void whatsMyName()
     {
         // Console
-        j.richTextBox1.Text += "\n" + j.userName + ": " + "What's my name";
-        j.richTextBox1.Text += "\nBoB: Jamie";
-        j.richTextBox1.Text += "\n";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": " + "What's my name";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Jamie";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
-        j.synthesizer.SpeakAsync("Jamie");
+        BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Jamie");
     }
 
     public void whatAreYou()
     {
         // Console
-        j.richTextBox1.Text += "\n" + j.userName + ": " + "What are you";
-        j.richTextBox1.Text += "\nBoB: I am a Speech Recognition system programmed in C#";
-        j.richTextBox1.Text += "\n";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": " + "What are you";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: I am a Speech Recognition system programmed in C#";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
-        j.synthesizer.SpeakAsync("I am a Speech Recognition system programmed in C sharp");
+        BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("I am a Speech Recognition system programmed in C sharp");
     }
 
     public void whatsTheTime()
     {
-        j.richTextBox1.Text += "\n" + j.userName + ": " + "What's the time";
-        j.richTextBox1.Text += "\nBoB: " + j.time;
-        j.richTextBox1.Text += "\n";
-        j.synthesizer.SpeakAsync(j.time);
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": " + "What's the time";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: " + BobbyBoy.Form1._Form1.time;
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+        BobbyBoy.Form1._Form1.synthesizer.SpeakAsync(BobbyBoy.Form1._Form1.time);
     }
 }

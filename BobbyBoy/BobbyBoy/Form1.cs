@@ -33,12 +33,13 @@ namespace BobbyBoy
         // Declaring Arrays
         public string[,] apps = new string[2,10];
 
-
-
         public Form1()
         {
             InitializeComponent();
+            _Form1 = this;
         }
+
+        public static  Form1 _Form1;
 
         public void CloseProcesses(ref string appClosed)
         {
