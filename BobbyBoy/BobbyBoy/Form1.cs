@@ -98,7 +98,7 @@ namespace BobbyBoy
 
             // Misc
             richTextBox1.Text += "\n";
-            btnDisable.Enabled = true;
+            btnDisable.Enabled  = true;
 
 
             // Testing
@@ -109,7 +109,7 @@ namespace BobbyBoy
             switch (e.Result.Text)
             {
                 // Speech Recognition
-                /*case "Hello":
+                case "Hello":
                     responces.helloBob();
                     break;
 
@@ -143,7 +143,7 @@ namespace BobbyBoy
 
                 case "What's the time":
                     responces.whatsTheTime();
-                    break;*/
+                    break;
 
                 case "Open Google":
                     richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
