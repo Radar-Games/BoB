@@ -14,6 +14,8 @@ using System.Speech.Synthesis;
 
 public class Class1
 {
+    // References
+
     public void helloBob()
 	{
         // Console
@@ -110,9 +112,68 @@ public class Class1
 
     public void whatsTheTime()
     {
+        // Console
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": " + "What's the time";
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: " + BobbyBoy.Form1._Form1.time;
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+        // Sythesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync(BobbyBoy.Form1._Form1.time);
     }
+
+    public void open()
+    {
+        // Console
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + "Open Application";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: What application do you want to open?";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+        // Synthesize
+        BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("What application");
+        // Variables
+        BobbyBoy.Form1._Form1.openApp = true;
+    }
+
+    public void openGoogle()
+    {
+        if (BobbyBoy.Form1._Form1.openApp == true)
+        {
+            // Console
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + "Google";
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Opening Google";
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+            // Synthesize
+            BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Opening Google");
+            // Execute Code
+            Process.Start("google");
+            // Variables
+            BobbyBoy.Form1._Form1.openApp = false;
+        }
+    }
+
+    public void close()
+    {
+        // Console
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Close application";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: What application do you want to close?";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+        // Synthesize
+        BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("What application do you want to close?");
+        // 
+        BobbyBoy.Form1._Form1.closeApp = true;
+    }
+
+    public void closeGoogle()
+    {
+        if (BobbyBoy.Form1._Form1.closeApp == true)
+        {
+            string app = "google";
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + "Google";
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Closing Google";;
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+            BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Closing Google");
+            BobbyBoy.Form1._Form1.CloseProcesses(ref app);
+            BobbyBoy.Form1._Form1.closeApp = false;
+        }
+    }
+
+
 }

@@ -26,6 +26,8 @@ namespace BobbyBoy
         // Communication Variables
         public bool greeted = false;
         public bool greeted1 = false;
+        public bool openApp = false;
+        public bool closeApp = false;
 
         // Important Shit
         public string time = DateTime.Now.ToString("hh:mm tt");
@@ -36,6 +38,7 @@ namespace BobbyBoy
         public Form1()
         {
             InitializeComponent();
+            // Creating Reference to Form
             _Form1 = this;
         }
 
@@ -85,7 +88,7 @@ namespace BobbyBoy
         {
             // Setting Choices and Grammar Builder
             Choices commands = new Choices();
-            commands.Add(new string[] { "Hello", "I'm good", "How are you", "Ok Bob", "Why is dad so annoying", "Whats my name", "What is Jak", "What are you", "Who are you", "What's the time", "Open Google", "Will Hellewell", "Why are you so dumb", "Say hello to Eloise", "Isn't it bob", "What songs playing", "Close Google", "Open Steam", "Close Steam" });
+            commands.Add(new string[] { "Close Google", "Open Google", "Hello", "I'm good", "How are you", "Ok Bob", "Why is dad so annoying", "Whats my name", "What is Jak", "What are you", "Who are you", "What's the time", "Open Application", "Will Hellewell", "Why are you so dumb", "Say hello to Eloise", "Isn't it bob", "What songs playing", "Close Google", "Open Steam", "Close Steam", "Google"});
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
             Grammar grammar = new Grammar(gBuilder);
@@ -145,21 +148,20 @@ namespace BobbyBoy
                     responces.whatsTheTime();
                     break;
 
+                case "Open Application":
+                    responces.open();
+                    break;
+                    
                 case "Open Google":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Opening Google";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("Opening Google");
-                    Process.Start("chrome");
+                    responces.openGoogle();
+                    break;
+
+                case "Close Application":
+                    responces.close();
                     break;
 
                 case "Close Google":
-                    string app = "chrome";
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Closing Google";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("Closing Google");
-                    CloseProcesses(ref app);
+                    responces.closeGoogle();
                     break;
 
                 case "Who are you":
