@@ -123,7 +123,7 @@ public class Class1
     public void open()
     {
         // Console
-        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + "Open Application";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Open Application";
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: What application do you want to open?";
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
@@ -137,13 +137,13 @@ public class Class1
         if (BobbyBoy.Form1._Form1.openApp == true)
         {
             // Console
-            BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + "Google";
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Google";
             BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Opening Google";
             BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
             // Synthesize
             BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Opening Google");
             // Execute Code
-            Process.Start("google");
+            Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe");
             // Variables
             BobbyBoy.Form1._Form1.openApp = false;
         }
@@ -157,7 +157,7 @@ public class Class1
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("What application do you want to close?");
-        // 
+        // Variables
         BobbyBoy.Form1._Form1.closeApp = true;
     }
 
@@ -165,8 +165,8 @@ public class Class1
     {
         if (BobbyBoy.Form1._Form1.closeApp == true)
         {
-            string app = "google";
-            BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + "Google";
+            string app = "google.exe";
+            BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Google";
             BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Closing Google";;
             BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
             BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Closing Google");
