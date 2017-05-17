@@ -32,9 +32,6 @@ namespace BobbyBoy
         // Important Shit
         public string time = DateTime.Now.ToString("hh:mm tt");
 
-        // Declaring Arrays
-        public string[,] apps = new string[2,10];
-
         public Form1()
         {
             InitializeComponent();
@@ -88,7 +85,7 @@ namespace BobbyBoy
         {
             // Setting Choices and Grammar Builder
             Choices commands = new Choices();
-            commands.Add(new string[] { "Close Google", "Google", "Hello Bob", "I'm good", "How are you", "Ok Bob", "Why is dad so annoying", "Whats my name", "What is Jak", "What are you", "Who are you", "What's the time", "Open Application", "Will Hellewell", "Why are you so dumb", "Say hello to Eloise", "Isn't it bob", "What songs playing", "Close Application", "Open Steam", "Close Steam", "Google"});
+            commands.Add(new string[] { "Close Google", "Google", "Hello Bob", "I'm good", "How are you", "Ok Bob", "Why is dad so annoying", "Whats my name", "What is Jak", "What are you", "Who are you", "What's the time", "Open Application", "Say hello to Eloise", "Isn't it bob", "What songs playing", "Close Application", "Google"});
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
             Grammar grammar = new Grammar(gBuilder);
@@ -165,55 +162,15 @@ namespace BobbyBoy
                     break;
 
                 case "Who are you":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: I am BoB a speech recognition system programmed in C#";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("I am BoB a speech recognition system programmed in c sharp");
-                    break;
-
-                case "Will Hellewell":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Sick Radical dabs";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("Sick radical dabs");
-                    break;
-
-                case "Why are you so dumb":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Im only as smart as the person that made me";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("Im only as smart as the person that made me");
+                    responces.whoAreYou();
                     break;
 
                 case "Say hello to Eloise":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Hi Eloise";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("Hi Eloise");
+                    responces.sayHelloToEloise();
                     break;
 
                 case "Isn't it bob":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Shut up";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("Shut up");
-                    break;
-
-                case "Open Steam":
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Opening Steam";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("Opening Steam");
-                    Process.Start(@"C:\Program Files (x86)\Steam\Steam.exe");
-                    break;
-
-                case "Close Steam":
-                    string app1 = "Steam Client Bootstrapper";
-                    richTextBox1.Text += "\n" + userName + ": " + e.Result.Text;
-                    richTextBox1.Text += "\nBoB: Closing Steam";
-                    richTextBox1.Text += "\n";
-                    synthesizer.SpeakAsync("Closing Steam");
-                    CloseProcesses(ref app1);
+                    responces.isntItBoB();
                     break;
             }
         }

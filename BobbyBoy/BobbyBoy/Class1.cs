@@ -15,6 +15,7 @@ using System.Speech.Synthesis;
 public class Class1
 {
     // References
+    VariableManager varManager = new VariableManager();
 
     public void helloBob()
 	{
@@ -24,8 +25,8 @@ public class Class1
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Hello  " + BobbyBoy.Form1._Form1.userName + " How are you?");
-        // Activating Varibles
-        BobbyBoy.Form1._Form1.greeted = true;
+        // Varaible Manager
+        varManager.Manager("helloBob");
     }
 
     public void imGood()
@@ -165,7 +166,7 @@ public class Class1
     {
         if (BobbyBoy.Form1._Form1.closeApp == true)
         {
-            string app = "google.exe";
+            string app = "chrome";
             BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Google";
             BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Closing Google";;
             BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
@@ -174,6 +175,32 @@ public class Class1
             BobbyBoy.Form1._Form1.closeApp = false;
         }
     }
+
+    public void whoAreYou()
+    {
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Who are you?";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: I am BoB a speech recognition system programmed in C#";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+        BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("I am BoB a speech recognition system programmed in c sharp");
+    }
+
+    public void sayHelloToEloise()
+    {
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Say hello to Eloise";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Hi Eloise";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+        BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Hi Eloise");
+    }
+
+    public void isntItBoB()
+    {
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Isn't it BoB";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Shut up";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+        BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Shut up");
+    }
+
+
 
 
 }
