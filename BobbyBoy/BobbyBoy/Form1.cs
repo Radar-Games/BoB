@@ -85,7 +85,26 @@ namespace BobbyBoy
         {
             // Setting Choices and Grammar Builder
             Choices commands = new Choices();
-            commands.Add(new string[] { "Close Google", "Google", "Hello Bob", "I'm good", "How are you", "Ok Bob", "Why is dad so annoying", "Whats my name", "What is Jak", "What are you", "Who are you", "What's the time", "Open Application", "Say hello to Eloise", "Isn't it bob", "What songs playing", "Close Application", "Google"});
+            commands.Add(new string[]
+            {
+                // Initial Conversation
+                "Hello Bob", "I'm good", "How are you",
+
+                // Misc
+                "Ok Bob", "Why is dad so annoying", "What is Jak",
+                "Say hello to Eloise", "Isn't it Bob" 
+
+                // Information
+                "What's the time", "Who are you", "What are you",
+                "What's my name",
+
+                // Application Manipulation
+                // Open
+                "Open Application", "Google"
+                
+                // Close
+                "Close Application", "Close Google"
+            });
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
             Grammar grammar = new Grammar(gBuilder);

@@ -224,6 +224,6 @@ public class Class1
         // Synthesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Shut up");
         // Variable Manager
-        varManager.Manager("isntItBob")
+        varManager.Manager("isntItBob");
     }
 }
