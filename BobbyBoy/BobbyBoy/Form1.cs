@@ -170,7 +170,7 @@ namespace BobbyBoy
                     break;
 
                 case "Isn't it bob":
-                    responces.isntItBoB();
+                    responces.isntItBob();
                     break;
             }
         }

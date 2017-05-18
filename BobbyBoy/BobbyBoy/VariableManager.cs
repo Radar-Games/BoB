@@ -15,24 +15,44 @@ public class VariableManager
 {
     public void Manager(string currentMethod)
     {
+        // greeted
         if (currentMethod == "helloBob")
         {
-            // Enabling Variables
             BobbyBoy.Form1._Form1.greeted = true;
-
-            // Disabling Variables
-            BobbyBoy.Form1._Form1.greeted1 = false;
-            BobbyBoy.Form1._Form1.openApp = false;
-            BobbyBoy.Form1._Form1.closeApp = false;
+        }
+        else
+        {
+            BobbyBoy.Form1._Form1.greeted = false;
         }
 
+        // greeted1
         if (currentMethod == "imGood")
         {
-            // Enabling Variables
             BobbyBoy.Form1._Form1.greeted1 = true;
+        }
+        else
+        {
+            BobbyBoy.Form1._Form1.greeted1 = false;
+        }
 
-            // Disabling Variables
+        // openApp
+        if (currentMethod == "open")
+        {
+            BobbyBoy.Form1._Form1.openApp = true;
+        }
+        else
+        {
+            BobbyBoy.Form1._Form1.openApp = false;
+        }
 
+        // closeApp
+        if (currentMethod == "close")
+        {
+            BobbyBoy.Form1._Form1.closeApp = true;
+        }
+        else
+        {
+            BobbyBoy.Form1._Form1.closeApp = false;
         }
     }
 }
