@@ -39,10 +39,8 @@ public class Class1
             BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
             // Synthesize
             BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("That's good");
-            // Activating Variables
-            BobbyBoy.Form1._Form1.greeted1 = true;
-            // Deacivating Variables
-            BobbyBoy.Form1._Form1.greeted = false;
+            // Varaible Manager
+            varManager.Manager("imGood");
         }
     }
 
@@ -56,8 +54,8 @@ public class Class1
             BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
             // Synthesize
             BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("I'm a computer not a human, I don't have emotions");
-            // Deactivating Variables
-            BobbyBoy.Form1._Form1.greeted1 = false;
+            // Varaible Manager
+            varManager.Manager("howAreYou");
         }
     }
 
@@ -69,6 +67,8 @@ public class Class1
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Yes");
+        // Variable Manager
+        varManager.Manager("okBob");
     }
 
     public void whyIsDadSoAnnoying()
@@ -79,6 +79,8 @@ public class Class1
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("because he is stupid");
+        // Variable Manager
+        varManager.Manager("whyIsDadSoAnnoying");
     }
 
     public void whatIsJak()
@@ -89,6 +91,8 @@ public class Class1
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("An idiot");
+        // Variable Manager
+        varManager.Manager("whatIsJak");
     }
 
     public void whatsMyName()
@@ -99,6 +103,8 @@ public class Class1
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Jamie");
+        // Variable Manager
+        varManager.Manager("whatsMyName");
     }
 
     public void whatAreYou()
@@ -109,6 +115,8 @@ public class Class1
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("I am a Speech Recognition system programmed in C sharp");
+        // Variable Manager
+        varManager.Manager("whatAreYou");
     }
 
     public void whatsTheTime()
@@ -119,6 +127,8 @@ public class Class1
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Sythesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync(BobbyBoy.Form1._Form1.time);
+        // Variable Manager
+        varManager.Manager("whatsTheTime");
     }
 
     public void open()
@@ -130,7 +140,7 @@ public class Class1
         // Synthesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("What application");
         // Variables
-        BobbyBoy.Form1._Form1.openApp = true;
+        varManager.Manager("open");
     }
 
     public void openGoogle()
@@ -146,7 +156,7 @@ public class Class1
             // Execute Code
             Process.Start(@"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe");
             // Variables
-            BobbyBoy.Form1._Form1.openApp = false;
+            varManager.Manager("openGoogle");
         }
     }
 
@@ -158,49 +168,62 @@ public class Class1
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
         // Synthesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("What application do you want to close?");
-        // Variables
-        BobbyBoy.Form1._Form1.closeApp = true;
+        // Variable Manager
+        varManager.Manager("close");
     }
 
     public void closeGoogle()
     {
         if (BobbyBoy.Form1._Form1.closeApp == true)
         {
+            // Variables
             string app = "chrome";
+            // Console
             BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Google";
             BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Closing Google";;
             BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+            // Synthesize
             BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Closing Google");
+            // Activating Methods
             BobbyBoy.Form1._Form1.CloseProcesses(ref app);
-            BobbyBoy.Form1._Form1.closeApp = false;
+            // Variable Manager
+            varManager.Manager("closeGoogle");
         }
     }
 
     public void whoAreYou()
     {
+        // Console
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Who are you?";
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: I am BoB a speech recognition system programmed in C#";
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+        // Synthesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("I am BoB a speech recognition system programmed in c sharp");
+        // Variable Manager
+        varManager.Manager("whoAreYou");
     }
 
     public void sayHelloToEloise()
     {
+        // Console
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Say hello to Eloise";
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Hi Eloise";
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+        // Synthesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Hi Eloise");
+        // Variable Manager
+        varManager.Manager("sayHelloToEloise");
     }
 
-    public void isntItBoB()
+    public void isntItBob()
     {
+        // Console
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Isn't it BoB";
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\nBoB: Shut up";
         BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+        // Synthesize
         BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Shut up");
+        // Variable Manager
+        varManager.Manager("isntItBob")
     }
-
-
-
-
 }
