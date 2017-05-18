@@ -92,18 +92,21 @@ namespace BobbyBoy
 
                 // Misc
                 "Ok Bob", "Why is dad so annoying", "What is Jak",
-                "Say hello to Eloise", "Isn't it Bob" 
+                "Say hello to Eloise", "Isn't it Bob", 
 
                 // Information
                 "What's the time", "Who are you", "What are you",
                 "What's my name",
 
-                // Application Manipulation
+                /// Application Manipulation
                 // Open
-                "Open Application", "Google"
+                "Open Application", "Google",
                 
                 // Close
-                "Close Application", "Close Google"
+                "Close Application", "Close Google",
+
+                // Both
+                "Cancel"
             });
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
@@ -152,7 +155,7 @@ namespace BobbyBoy
                     responces.whatIsJak();
                     break;
 
-                case "Whats my name":
+                case "What's my name":
                     responces.whatsMyName();
                     break;
 
@@ -190,6 +193,10 @@ namespace BobbyBoy
 
                 case "Isn't it bob":
                     responces.isntItBob();
+                    break;
+
+                case "Cancel":
+                    responces.cancel();
                     break;
             }
         }

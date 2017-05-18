@@ -13,7 +13,7 @@ using System.Speech.Synthesis;
 
 public class VariableManager
 {
-    public void Manager(string currentMethod)
+    public void VarChanger(string currentMethod)
     {
         // greeted
         if (currentMethod == "helloBob")
