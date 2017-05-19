@@ -241,4 +241,16 @@ public class Class1
             varManager.VarChanger("cancel");
         }
     }
+
+    public void displayCommands()
+    {
+        // Console
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.userName + ": Display Commands";
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n" + BobbyBoy.Form1._Form1.;
+        BobbyBoy.Form1._Form1.richTextBox1.Text += "\n";
+        // Synthesize
+        BobbyBoy.Form1._Form1.synthesizer.SpeakAsync("Ok");
+        // Variable Manager
+        varManager.VarChanger("cancel");
+    }
 }

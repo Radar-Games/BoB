@@ -31,6 +31,8 @@ namespace BobbyBoy
 
         // Important Shit
         public string time = DateTime.Now.ToString("hh:mm tt");
+        public string[] comm = new string[100000];
+
 
         public Form1()
         {
@@ -96,7 +98,7 @@ namespace BobbyBoy
 
                 // Information
                 "What's the time", "Who are you", "What are you",
-                "What's my name",
+                "What's my name", "Display Commands",
 
                 /// Application Manipulation
                 // Open
@@ -197,6 +199,10 @@ namespace BobbyBoy
 
                 case "Cancel":
                     responces.cancel();
+                    break;
+
+                case "Display Commands":
+                    responces.displayCommands();
                     break;
             }
         }
