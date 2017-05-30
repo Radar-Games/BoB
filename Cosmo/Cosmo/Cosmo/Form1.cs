@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,10 @@ namespace Cosmo
         // User Variables
         public string username = "Jamie";
 
+        // Conversation Variable
+        public bool greeted1 = false;
+        public bool greeted2 = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -30,6 +35,8 @@ namespace Cosmo
             _Form1 = this;
         }
 
+
+        #region Enabling and Disabling Speech Recognition
         private void btnEnable_Click(object sender, EventArgs e)
         {
             recEngine.RecognizeAsync(RecognizeMode.Multiple);
@@ -43,20 +50,26 @@ namespace Cosmo
             btnDisable.Enabled = false;
             btnEnable.Enabled = true;
         }
+        #endregion
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            #region GrammarBuilder and Loading Commands
             Choices commands = new Choices();
             commands.Add(new string[]
             {
-                // Hello
-                "Hello Cosmo"
+                // Greeting
+                "Hello Cosmo", "I'm good", "How are you"
+
+                // Information
+                "What's the time", "What's the date"
             });
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
             Grammar grammar = new Grammar(gBuilder);
-
-            // Update
+            #endregion
+            
+            // Loading  Grammar and defualt settings
             recEngine.LoadGrammarAsync(grammar);
             recEngine.SetInputToDefaultAudioDevice();
             recEngine.SpeechRecognized += recEngine_SpeechRecognized;
@@ -65,9 +78,24 @@ namespace Cosmo
 
         public void recEngine_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            if (e.Result.Text == "Hello Cosmo")
+            if(e.Result.Confidence >= 0.7)
             {
-                commands.helloCosmo();
+                #region Greeting
+                if (e.Result.Text == "Hello Cosmo")
+                {
+                    commands.helloCosmo();
+                }
+
+                if (e.Result.Text == "I'm good")
+                {
+                    commands.imGood();
+                }
+
+                if(e.Result.Text == "How are you")
+                {
+                    commands.howAreYou();
+                }
+                #endregion
             }
         }
     }

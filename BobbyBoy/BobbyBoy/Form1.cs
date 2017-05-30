@@ -30,7 +30,7 @@ namespace BobbyBoy
         public bool closeApp = false;
 
         // Important Shit
-        public string time = DateTime.Now.ToString("hh:mm tt");
+        public string time = DateTime.Now.ToString("hh:mm");
         public string[] comm = new string[100000];
 
 
