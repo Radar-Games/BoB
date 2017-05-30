@@ -27,6 +27,9 @@ namespace Cosmo
         // Conversation Variable
         public bool greeted1 = false;
         public bool greeted2 = false;
+        public bool initial = false;
+        public bool open = false;
+        public bool close = false;
 
         public Form1()
         {
@@ -35,8 +38,38 @@ namespace Cosmo
             _Form1 = this;
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            this.FormBorderStyle = FormBorderStyle.None;
+        }
 
-        #region Enabling and Disabling Speech Recognition
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Capture = false;
+                Message msg = Message.Create(this.Handle, 0XA1, new IntPtr(2), IntPtr.Zero);
+                this.WndProc(ref msg);
+            }
+        }
+
+        public void CloseProcesses(string appClosed)
+        {
+            Process[] pArry = Process.GetProcesses();
+
+            foreach (Process p in pArry)
+            {
+                string s = p.ProcessName;
+                s = s.ToLower();
+                if (s.CompareTo(appClosed) == 0)
+                {
+                    p.Kill();
+                }
+            }
+        }
+
         private void btnEnable_Click(object sender, EventArgs e)
         {
             recEngine.RecognizeAsync(RecognizeMode.Multiple);
@@ -50,16 +83,19 @@ namespace Cosmo
             btnDisable.Enabled = false;
             btnEnable.Enabled = true;
         }
-        #endregion
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            #region GrammarBuilder and Loading Commands
             Choices commands = new Choices();
             commands.Add(new string[]
             {
                 // Greeting
-                "Hello Cosmo", "I'm good", "How are you"
+                "Hello Cosmo", "I'm good", "How are you",
+
+                // Application Manipulation
+                "Close Application", "Open Application",
+
+                "Google Chrome",
 
                 // Information
                 "What's the time", "What's the date"
@@ -67,7 +103,6 @@ namespace Cosmo
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
             Grammar grammar = new Grammar(gBuilder);
-            #endregion
             
             // Loading  Grammar and defualt settings
             recEngine.LoadGrammarAsync(grammar);
@@ -80,7 +115,6 @@ namespace Cosmo
         {
             if(e.Result.Confidence >= 0.7)
             {
-                #region Greeting
                 if (e.Result.Text == "Hello Cosmo")
                 {
                     commands.helloCosmo();
@@ -91,11 +125,43 @@ namespace Cosmo
                     commands.imGood();
                 }
 
-                if(e.Result.Text == "How are you")
+                if (e.Result.Text == "How are you")
                 {
                     commands.howAreYou();
                 }
-                #endregion
+
+                if (e.Result.Text == "What's the time")
+                {
+                    commands.whatsTheTime();
+                }
+
+                if (e.Result.Text == "What's the date")
+                {
+                    commands.whatsTheDate();
+                }
+
+                if (e.Result.Text == "Open Application")
+                {
+                    commands.openApplication();
+                }
+
+                if (e.Result.Text == "Close Application")
+                {
+                    commands.closeApplication();
+                }
+
+                if (e.Result.Text == "Google Chrome")
+                {
+                    if (open == true)
+                    {
+                        commands.openGoogleChrome();
+                    }
+
+                    if (close == true)
+                    {
+                        commands.closeGoogleChrome();
+                    }
+                }
             }
         }
     }

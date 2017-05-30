@@ -13,7 +13,6 @@ using System.Speech.Synthesis;
 
 namespace Cosmo
 {
-    #region Methods used to access form
     class Executables
     {
         
@@ -26,23 +25,16 @@ namespace Cosmo
             Cosmo.Form1._Form1.synthesizer.SpeakAsync(text);
         }
     }
-    #endregion
 
     class Commands
     {
-        #region Variables
         public string time = DateTime.Now.ToString("hh:mm");
-        public string date = DateTime.Now.ToString("dd:mm:yyyy");
-        #endregion
+        public string date = DateTime.Now.ToString("dd/MM/yyyy");
 
-        #region Creating Classes
         Executables exe = new Executables();
         VariableController var = new VariableController();
-        #endregion
 
         // Methods
-
-        #region helloCosmo
         public void helloCosmo()
         {
             // Variables
@@ -59,47 +51,47 @@ namespace Cosmo
             // Varaible Manager
             var.VarManager("helloCosmo");
         }
-        #endregion
 
-        #region imGood
         public void imGood()
         {
-            // Varibles
-            string recognized = "\n" + Cosmo.Form1._Form1.username + ": I'm good";
-            string response = "\nBoB: That's good";
-            string addLine = "\n";
-            string synthesize = "That's good";
-            // Adding to Console
-            exe.textAdd(ref recognized);
-            exe.textAdd(ref response);
-            exe.textAdd(ref addLine);
-            // Synthesize
-            exe.synth(ref synthesize);
-            // Variable Manager
-            var.VarManager("imGood");
+            if (Cosmo.Form1._Form1.greeted1 == true)
+            {
+                // Variables
+                string recognized = "\n" + Cosmo.Form1._Form1.username + ": I'm good";
+                string response = "\nBoB: That's good";
+                string addLine = "\n";
+                string synthesize = "That's good";
+                // Adding to Console
+                exe.textAdd(ref recognized);
+                exe.textAdd(ref response);
+                exe.textAdd(ref addLine);
+                // Synthesize
+                exe.synth(ref synthesize);
+                // Variable Manager
+                var.VarManager("imGood");
+            }
         }
-        #endregion
 
-        #region howAreYou
         public void howAreYou()
         {
-            // Variables
-            string recognized = "\n" + Cosmo.Form1._Form1.username + ": How are you?";
-            string response = "\nBoB: I don't have emotions";
-            string addLine = "\n";
-            string synthesize = "I don't have emotions";
-            // Adding to Console
-            exe.textAdd(ref recognized);
-            exe.textAdd(ref response);
-            exe.textAdd(ref addLine);
-            // Synthesize
-            exe.synth(ref synthesize);
-            // Variable Manager
-            var.VarManager("howAreYou");
+            if (Cosmo.Form1._Form1.greeted2 == true)
+            {
+                // Variables
+                string recognized = "\n" + Cosmo.Form1._Form1.username + ": How are you?";
+                string response = "\nBoB: I don't have emotions";
+                string addLine = "\n";
+                string synthesize = "I don't have emotions";
+                // Adding to Console
+                exe.textAdd(ref recognized);
+                exe.textAdd(ref response);
+                exe.textAdd(ref addLine);
+                // Synthesize
+                exe.synth(ref synthesize);
+                // Variable Manager
+                var.VarManager("howAreYou");
+            }
         }
-        #endregion
 
-        #region whatsTheTime
         public void whatsTheTime()
         {
             // Variables
@@ -116,9 +108,7 @@ namespace Cosmo
             // Variable Manager
             var.VarManager("whatsTheTime");
         }
-        #endregion
 
-        #region whatsTheDate
         public void whatsTheDate()
         {
             // Variables
@@ -135,6 +125,77 @@ namespace Cosmo
             // Variable Manager
             var.VarManager("whatsTheDate");
         }
-        #endregion
+
+        public void openApplication()
+        {
+            // Variables
+            string recognized = "\n" + Cosmo.Form1._Form1.username + ": Open Application";
+            string response = "\nBoB: Which Application?";
+            string addLine = "\n";
+            string synthesize = "Which Application?";
+            // Adding to Console
+            exe.textAdd(ref recognized);
+            exe.textAdd(ref response);
+            exe.textAdd(ref addLine);
+            // Synthesize
+            exe.synth(ref synthesize);
+            // Variable Manager
+            var.VarManager("openApplication");
+        }
+
+        public void openGoogleChrome()
+        {
+            // Variables
+            string recognized = "\n" + Cosmo.Form1._Form1.username + ": Open Google Chrome";
+            string response = "\nBoB: Opening Google Chrome";
+            string addLine = "\n";
+            string synthesize = "Opening Google Chrome";
+            // Adding to Console
+            exe.textAdd(ref recognized);
+            exe.textAdd(ref response);
+            exe.textAdd(ref addLine);
+            // Synthesize
+            exe.synth(ref synthesize);
+            // Executing Methods
+            Process.Start(@"C:\Program Files(x86)\Google\Chrome\Application\chrome");
+            // Variable Manager
+            var.VarManager("openGoogleChrome");
+        }
+
+        public void closeApplication()
+        {
+            // Variables
+            string recognized = "\n" + Cosmo.Form1._Form1.username + ": Close Application";
+            string response = "\nBoB: Which Application?";
+            string addLine = "\n";
+            string synthesize = "Which Application?";
+            // Adding to Console
+            exe.textAdd(ref recognized);
+            exe.textAdd(ref response);
+            exe.textAdd(ref addLine);
+            // Synthesize
+            exe.synth(ref synthesize);
+            // Variable Manager
+            var.VarManager("closeApplication");
+        }
+
+        public void closeGoogleChrome()
+        {
+            // Variables
+            string recognized = "\n" + Cosmo.Form1._Form1.username + ": Google Chrome";
+            string response = "\nBoB: Closing Google Chrome";
+            string addLine = "\n";
+            string synthesize = "Closing Google Chrome";
+            // Adding to Console
+            exe.textAdd(ref recognized);
+            exe.textAdd(ref response);
+            exe.textAdd(ref addLine);
+            // Synthesize
+            exe.synth(ref synthesize);
+            // Executing Methods
+            Cosmo.Form1._Form1.CloseProcesses("chrome");
+            // Variable Manager
+            var.VarManager("closeGoogleChrome");
+        }
     }
 }
