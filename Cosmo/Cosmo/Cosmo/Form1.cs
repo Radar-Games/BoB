@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Speech.Recognition;
 using System.Speech.Synthesis;
+using SpotifyAPI.Local;
+using SpotifyAPI.Local.Enums;
+using SpotifyAPI.Local.Models;
 
 namespace Cosmo
 {
@@ -30,6 +33,7 @@ namespace Cosmo
         public bool initial = false;
         public bool open = false;
         public bool close = false;
+        public bool spotPlay = false;
 
         public Form1()
         {
@@ -99,9 +103,9 @@ namespace Cosmo
 
                 // Time/Date
                 "What's the time", "What's the date",
-
+                "Play song",
                 // Weather
-                "What's the weather like today", "Whats the tempurature"
+                "What's the weather like today", "What's the temperature",
             });
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
@@ -135,6 +139,11 @@ namespace Cosmo
                 }
                 #endregion
 
+                if (e.Result.Text == "Play song")
+                {
+                    Process.Start(@"C:\Users\Jamie Coulson\AppData\Roaming\Spotify\Spotify.exe");
+                }
+
                 #region Get Information
                 if (e.Result.Text == "What's the time")
                 {
@@ -151,9 +160,9 @@ namespace Cosmo
                     commands.whatsTheWeatherLikeToday();
                 }
 
-                if (e.Result.Text == "What's the tempurature")
+                if (e.Result.Text == "What's the temperature")
                 {
-                    commands.whatsTheTempurature();
+                    commands.whatsTheTemperature();
                 }
                 #endregion
 

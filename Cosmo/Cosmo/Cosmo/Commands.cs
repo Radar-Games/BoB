@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Speech.Recognition;
 using System.Speech.Synthesis;
+using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace Cosmo
 {
@@ -20,6 +22,8 @@ namespace Cosmo
         string condition;
         string high;
         string low;
+        public double c;
+        string path1;
 
         public void textAdd(ref string text)
         {
@@ -28,6 +32,14 @@ namespace Cosmo
         public void synth(ref string text)
         {
             Cosmo.Form1._Form1.synthesizer.SpeakAsync(text);
+        }
+        
+        public double fahrenheitToCelsius(double f)
+        {
+            f -= 32;
+            f = f/1.8;
+            c = f;
+            return Convert.ToInt32(c);
         }
 
         public String GetWeather(String input)
@@ -43,7 +55,7 @@ namespace Cosmo
             XmlNodeList nodes = wData.SelectNodes("query/results/channel");
             try
             {
-                temp = channel.SelectSingleNode("item").SelectSingleNode("yweather:condition", manager).Attributes["temp"].Value;
+                temp = (channel.SelectSingleNode("item").SelectSingleNode("yweather:condition", manager).Attributes["temp"].Value);
                 condition = channel.SelectSingleNode("item").SelectSingleNode("yweather:condition", manager).Attributes["text"].Value;
                 high = channel.SelectSingleNode("item").SelectSingleNode("yweather:forecast", manager).Attributes["high"].Value;
                 low = channel.SelectSingleNode("item").SelectSingleNode("yweather:forecast", manager).Attributes["low"].Value;
@@ -69,6 +81,34 @@ namespace Cosmo
                 return "Error Reciving data";
             }
             return "error";
+        }
+
+        public static void SetFocusToExternalApp(string strProcessName)
+        {
+            Process[] arrProcesses = Process.GetProcessesByName(strProcessName);
+            if (arrProcesses.Length > 0)
+            {
+                IntPtr ipHwnd = arrProcesses[0].MainWindowHandle;
+                Thread.Sleep(100);
+                SetForegroundWindow(ipHwnd);
+                //string procName = Process.GetCurrentProcess().ProcessName;
+                //ProcessHelper.SetFocusToExternalApp(procName);
+            }
+        }
+
+        //API-declaration
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        public void playPauseSong(string e)
+        {
+            if (e == "1")
+            {
+                path1 = System.AppDomain.CurrentDomain.FriendlyName;
+                Process.Start(@"C:\Users\Jamie Coulson\AppData\Roaming\Spotify\Spotify.exe");
+                SendKeys.SendWait(" ");
+                SetFocusToExternalApp(@"" + path1);
+            }
         }
     }
 
@@ -248,9 +288,9 @@ namespace Cosmo
         {
             // Variables
             string recognized = "\n" + Cosmo.Form1._Form1.username + ": What's the weather like today?";
-            string response = "\nBoB: The weather is " + exe.GetWeather("cond") + ", with a high of " + exe.GetWeather("high") + "and a low of " + exe.GetWeather("low");
+            string response = "\nBoB: It is " + exe.GetWeather("cond") + " with a high of " + exe.fahrenheitToCelsius(Convert.ToDouble(exe.GetWeather("high"))) + " degrees and a low of " + exe.fahrenheitToCelsius(Convert.ToDouble(exe.GetWeather("low"))) + " degrees";
             string addLine = "\n";
-            string synthesize = "The weather is " + exe.GetWeather("cond") + ", with a high of " + exe.GetWeather("high") + "and a low of " + exe.GetWeather("low");
+            string synthesize = "It is " + exe.GetWeather("cond") + " with a high of " + exe.fahrenheitToCelsius(Convert.ToDouble(exe.GetWeather("high"))) + " degrees and a low of " + exe.fahrenheitToCelsius(Convert.ToDouble(exe.GetWeather("low"))) + "degrees";
             // Adding to Console
             exe.textAdd(ref recognized);
             exe.textAdd(ref response);
@@ -261,13 +301,13 @@ namespace Cosmo
             var.VarManager("whatsTheWeatherLikeToday");
         }
 
-        public void whatsTheTempurature()
+        public void whatsTheTemperature()
         {
             // Variables
-            string recognized = "\n" + Cosmo.Form1._Form1.username + ": What's the tempurature?";
-            string response = "\nBoB: The temperature is " + exe.GetWeather("temp");
+            string recognized = "\n" + Cosmo.Form1._Form1.username + ": What's the temperature?";
+            string response = "\nBoB: It is" + exe.fahrenheitToCelsius(Convert.ToDouble(exe.GetWeather("temp"))) + " degrees";
             string addLine = "\n";
-            string synthesize = "The tempurature is " + exe.GetWeather("temp");
+            string synthesize = "It is " + exe.fahrenheitToCelsius(Convert.ToDouble(exe.GetWeather("temp"))) + " degrees";
             // Adding to Console
             exe.textAdd(ref recognized);
             exe.textAdd(ref response);
@@ -275,7 +315,26 @@ namespace Cosmo
             // Synthesize
             exe.synth(ref synthesize);
             // Variable Manager 
-            var.VarManager("whatsTheTempurature");
+            var.VarManager("whatsTheTemperature");
+        }
+
+        public void playSong()
+        {
+            // Variables
+            string recognized = "\n" + Cosmo.Form1._Form1.username + ": Play Song";
+            string response = "\nBoB: Resumed song";
+            string addLine = "\n";
+            string synthesize = "Resumed song";
+            // Adding to Console
+            exe.textAdd(ref recognized);
+            exe.textAdd(ref response);
+            exe.textAdd(ref addLine);
+            // Synthesize
+            exe.synth(ref synthesize);
+            // Executables
+            exe.playPauseSong();
+            // Variable Manager 
+            var.VarManager("playSong");
         }
     }
 }
