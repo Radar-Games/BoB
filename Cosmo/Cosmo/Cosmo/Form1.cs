@@ -97,8 +97,11 @@ namespace Cosmo
 
                 "Google Chrome",
 
-                // Information
-                "What's the time", "What's the date"
+                // Time/Date
+                "What's the time", "What's the date",
+
+                // Weather
+                "What's the weather like today", "Whats the tempurature"
             });
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
@@ -115,6 +118,7 @@ namespace Cosmo
         {
             if(e.Result.Confidence >= 0.7)
             {
+                #region Greeting
                 if (e.Result.Text == "Hello Cosmo")
                 {
                     commands.helloCosmo();
@@ -129,7 +133,9 @@ namespace Cosmo
                 {
                     commands.howAreYou();
                 }
+                #endregion
 
+                #region Get Information
                 if (e.Result.Text == "What's the time")
                 {
                     commands.whatsTheTime();
@@ -140,6 +146,18 @@ namespace Cosmo
                     commands.whatsTheDate();
                 }
 
+                if (e.Result.Text == "What's the weather like today")
+                {
+                    commands.whatsTheWeatherLikeToday();
+                }
+
+                if (e.Result.Text == "What's the tempurature")
+                {
+                    commands.whatsTheTempurature();
+                }
+                #endregion
+
+                #region Open/Close Region
                 if (e.Result.Text == "Open Application")
                 {
                     commands.openApplication();
@@ -162,6 +180,7 @@ namespace Cosmo
                         commands.closeGoogleChrome();
                     }
                 }
+                #endregion
             }
         }
     }
