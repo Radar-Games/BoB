@@ -110,6 +110,7 @@ namespace Cosmo
             recEngine.SetInputToDefaultAudioDevice();
             recEngine.SpeechRecognized += recEngine_SpeechRecognized;
             synthesizer.Volume = 100;
+            synthesizer.SelectVoiceByHints(VoiceGender.Male, VoiceAge.Child);
         }
 
         public void recEngine_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
@@ -198,7 +199,7 @@ namespace Cosmo
                     commands.enableMasterControls();
                 }
 
-                if (e.Resume.Text == "Disable master controls")
+                if (e.Result.Text == "Disable master controls")
                 {
                     commands.disableMasterControls();
                 }
