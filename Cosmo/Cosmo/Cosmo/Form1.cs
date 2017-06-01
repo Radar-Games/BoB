@@ -33,7 +33,8 @@ namespace Cosmo
         public bool initial = false;
         public bool open = false;
         public bool close = false;
-        public bool spotPlay = false;
+        public bool spotPlaying = false;
+        public bool MasterControls = false;
 
         public Form1()
         {
@@ -58,22 +59,7 @@ namespace Cosmo
                 this.WndProc(ref msg);
             }
         }
-
-        public void CloseProcesses(string appClosed)
-        {
-            Process[] pArry = Process.GetProcesses();
-
-            foreach (Process p in pArry)
-            {
-                string s = p.ProcessName;
-                s = s.ToLower();
-                if (s.CompareTo(appClosed) == 0)
-                {
-                    p.Kill();
-                }
-            }
-        }
-
+        
         private void btnEnable_Click(object sender, EventArgs e)
         {
             recEngine.RecognizeAsync(RecognizeMode.Multiple);
@@ -103,9 +89,17 @@ namespace Cosmo
 
                 // Time/Date
                 "What's the time", "What's the date",
-                "Play song",
+
                 // Weather
                 "What's the weather like today", "What's the temperature",
+
+                // Spotify
+                "Play song", "Pause song",
+
+                // Master Controls
+                "Enable master controls", "Disable master controls",
+                
+                "Spotify is playing", "Spotify is paused"
             });
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
@@ -139,11 +133,6 @@ namespace Cosmo
                 }
                 #endregion
 
-                if (e.Result.Text == "Play song")
-                {
-                    Process.Start(@"C:\Users\Jamie Coulson\AppData\Roaming\Spotify\Spotify.exe");
-                }
-
                 #region Get Information
                 if (e.Result.Text == "What's the time")
                 {
@@ -166,7 +155,7 @@ namespace Cosmo
                 }
                 #endregion
 
-                #region Open/Close Region
+                #region Open/Close Application
                 if (e.Result.Text == "Open Application")
                 {
                     commands.openApplication();
@@ -188,6 +177,40 @@ namespace Cosmo
                     {
                         commands.closeGoogleChrome();
                     }
+                }
+                #endregion
+
+                #region Spotify Controls
+                if (e.Result.Text == "Play song")
+                {
+                    commands.playSong();
+                }
+
+                if (e.Result.Text == "Pause song")
+                {
+                    commands.pauseSong();
+                }
+                #endregion
+
+                #region Master Controls
+                if (e.Result.Text == "Enable master controls")
+                {
+                    commands.enableMasterControls();
+                }
+
+                if (e.Resume.Text == "Disable master controls")
+                {
+                    commands.disableMasterControls();
+                }
+
+                if (e.Result.Text == "Spotify is playing")
+                {
+                    commands.spotifyIsPlaying();
+                }
+
+                if (e.Result.Text == "Spotify is paused")
+                {
+                    commands.spotifyIsPaused();
                 }
                 #endregion
             }

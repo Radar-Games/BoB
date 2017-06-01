@@ -100,14 +100,32 @@ namespace Cosmo
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        public void playPauseSong(string e)
+        public void playPauseSong()
         {
-            if (e == "1")
+            path1 = System.AppDomain.CurrentDomain.FriendlyName;
+            Process.Start(@"C:\Users\Jamie Coulson\AppData\Roaming\Spotify\Spotify.exe");
+            Thread.Sleep(50);
+            SendKeys.SendWait(" ");
+            SetFocusToExternalApp(@"" + path1);
+        }
+
+        public void openProcess(string e)
+        {
+            Process.Start(e);
+        }
+
+        public void CloseProcesses(string appClosed)
+        {
+            Process[] pArry = Process.GetProcesses();
+
+            foreach (Process p in pArry)
             {
-                path1 = System.AppDomain.CurrentDomain.FriendlyName;
-                Process.Start(@"C:\Users\Jamie Coulson\AppData\Roaming\Spotify\Spotify.exe");
-                SendKeys.SendWait(" ");
-                SetFocusToExternalApp(@"" + path1);
+                string s = p.ProcessName;
+                s = s.ToLower();
+                if (s.CompareTo(appClosed) == 0)
+                {
+                    p.Kill();
+                }
             }
         }
     }
@@ -243,7 +261,7 @@ namespace Cosmo
             // Synthesize
             exe.synth(ref synthesize);
             // Executing Methods
-            Process.Start(@"C:\Program Files(x86)\Google\Chrome\Application\chrome");
+            exe.openProcess(@"C:\Program Files(x86)\Google\Chrome\Application\chrome");
             // Variable Manager
             var.VarManager("openGoogleChrome");
         }
@@ -279,7 +297,7 @@ namespace Cosmo
             // Synthesize
             exe.synth(ref synthesize);
             // Executing Methods
-            Cosmo.Form1._Form1.CloseProcesses("chrome");
+            exe.CloseProcesses("chrome");
             // Variable Manager
             var.VarManager("closeGoogleChrome");
         }
@@ -320,21 +338,130 @@ namespace Cosmo
 
         public void playSong()
         {
-            // Variables
-            string recognized = "\n" + Cosmo.Form1._Form1.username + ": Play Song";
-            string response = "\nBoB: Resumed song";
-            string addLine = "\n";
-            string synthesize = "Resumed song";
-            // Adding to Console
-            exe.textAdd(ref recognized);
-            exe.textAdd(ref response);
-            exe.textAdd(ref addLine);
-            // Synthesize
-            exe.synth(ref synthesize);
-            // Executables
-            exe.playPauseSong();
-            // Variable Manager 
-            var.VarManager("playSong");
+            if (Cosmo.Form1._Form1.spotPlaying == false)
+            {
+                // Variables
+                string recognized = "\n" + Cosmo.Form1._Form1.username + ": Play song";
+                string response = "\nBoB: Resumed song";
+                string addLine = "\n";
+                string synthesize = "Resumed song";
+                // Adding to Console
+                exe.textAdd(ref recognized);
+                exe.textAdd(ref response);
+                exe.textAdd(ref addLine);
+                // Synthesize
+                exe.synth(ref synthesize);
+                // Executables
+                exe.playPauseSong();
+                // Variable Manager 
+                var.VarManager("playSong");
+            }
         }
-    }
+
+        public void pauseSong()
+        {
+            if (Cosmo.Form1._Form1.spotPlaying == true)
+            {
+                // Variables
+                string recognized = "\n" + Cosmo.Form1._Form1.username + ": Pause song";
+                string response = "\nBoB: Paused song";
+                string addLine = "\n";
+                string synthesize = "Paused song";
+                // Adding to Console
+                exe.textAdd(ref recognized);
+                exe.textAdd(ref response);
+                exe.textAdd(ref addLine);
+                // Synthesize
+                exe.synth(ref synthesize);
+                // Executables
+                exe.playPauseSong();
+                // Variable Manager 
+                var.VarManager("playSong");
+            }
+        }
+
+        public void enableMasterControls()
+        {
+            if (Cosmo.Form1._Form1.MasterControls == false)
+            {
+                // Variables
+                string recognized = "\n" + Cosmo.Form1._Form1.username + ": Enable master controls";
+                string response = "\nBoB: Enabled master controls";
+                string addLine = "\n";
+                string synthesize = "Enabled master controls";
+                // Adding to Console
+                exe.textAdd(ref recognized);
+                exe.textAdd(ref response);
+                exe.textAdd(ref addLine);
+                // Synthesize
+                exe.synth(ref synthesize);
+                // Executables
+                exe.playPauseSong();
+                // Variable Manager 
+                var.VarManager("enableMasterControls");
+            }
+        }
+
+        public void disableMasterControls()
+        {
+            if (Cosmo.Form1._Form1.MasterControls == true)
+            {
+                // Variables
+                string recognized = "\n" + Cosmo.Form1._Form1.username + ": Disable master controls";
+                string response = "\nBoB: Disabled master controls";
+                string addLine = "\n";
+                string synthesize = "Disabled master controls";
+                // Adding to Console
+                exe.textAdd(ref recognized);
+                exe.textAdd(ref response);
+                exe.textAdd(ref addLine);
+                // Synthesize
+                exe.synth(ref synthesize);
+                // Executables
+                exe.playPauseSong();
+                // Variable Manager 
+                var.VarManager("disableMasterControls");
+            }
+        }
+
+        public void spotifyIsPlaying()
+        {
+            if (Cosmo.Form1._Form1.MasterControls == true)
+            {
+                // Variables
+                string recognized = "\n" + Cosmo.Form1._Form1.username + ": Spotify is playing";
+                string response = "\nBoB: Adjusted variables";
+                string addLine = "\n";
+                string synthesize = "Adjusted Variables";
+                // Adding to Console
+                exe.textAdd(ref recognized);
+                exe.textAdd(ref response);
+                exe.textAdd(ref addLine);
+                // Synthesize
+                exe.synth(ref synthesize);
+                // Variable Manager 
+                var.VarManager("spotifyIsPlaying");
+            }
+        }
+
+        public void spotifyIsPaused()
+        {
+            if (Cosmo.Form1._Form1.MasterControls == true)
+            {
+                // Variables
+                string recognized = "\n" + Cosmo.Form1._Form1.username + ": Spotify is paused";
+                string response = "\nBoB: Adjusted variables";
+                string addLine = "\n";
+                string synthesize = "Adjusted Variables";
+                // Adding to Console
+                exe.textAdd(ref recognized);
+                exe.textAdd(ref response);
+                exe.textAdd(ref addLine);
+                // Synthesize
+                exe.synth(ref synthesize);
+                // Variable Manager 
+                var.VarManager("spotifyIsPaused");
+            }
+        }
+    }   
 }
