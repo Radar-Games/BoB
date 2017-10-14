@@ -80,16 +80,6 @@ public class VariableController
         {
             Cosmo.Form1._Form1.MasterControls = false;
         }
-
-        if (MethodAct == "spotifyIsPlaying")
-        {
-            Cosmo.Form1._Form1.spotPlaying = true;
-        }
-
-        if (MethodAct == "spotifyIsPaused")
-        {
-            Cosmo.Form1._Form1.spotPlaying = false;
-        }
         #endregion
     }
 }

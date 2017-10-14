@@ -203,16 +203,6 @@ namespace Cosmo
                 {
                     commands.disableMasterControls();
                 }
-
-                if (e.Result.Text == "Spotify is playing")
-                {
-                    commands.spotifyIsPlaying();
-                }
-
-                if (e.Result.Text == "Spotify is paused")
-                {
-                    commands.spotifyIsPaused();
-                }
                 #endregion
             }
         }

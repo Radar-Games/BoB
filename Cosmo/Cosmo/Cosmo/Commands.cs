@@ -25,6 +25,12 @@ namespace Cosmo
         public double c;
         string path1;
 
+        public const int KEYEVENTF_EXTENTEDKEY = 1;
+        public const int KEYEVENTF_KEYUP = 0;
+        public const int VK_MEDIA_NEXT_TRACK = 0xB0;
+        public const int VK_MEDIA_PLAY_PAUSE = 0xB3;
+        public const int VK_MEDIA_PREV_TRACK = 0xB1;
+
         public void textAdd(ref string text)
         {
             Cosmo.Form1._Form1.richTextBox1.Text += text;
@@ -100,13 +106,12 @@ namespace Cosmo
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
 
+        [DllImport("user32.dll")]
+        public static extern void keybd_event(byte virtualKey, byte scanCode, uint flags, IntPtr extraInfo);
+
         public void playPauseSong()
         {
-            path1 = System.AppDomain.CurrentDomain.FriendlyName;
-            Process.Start(@"C:\Users\Jamie Coulson\AppData\Roaming\Spotify\Spotify.exe");
-            Thread.Sleep(50);
-            SendKeys.SendWait(" ");
-            SetFocusToExternalApp(@"" + path1);
+            keybd_event(VK_MEDIA_PLAY_PAUSE, 0, KEYEVENTF_EXTENTEDKEY, IntPtr.Zero);
         }
 
         public void openProcess(string e)
@@ -338,8 +343,6 @@ namespace Cosmo
 
         public void playSong()
         {
-            if (Cosmo.Form1._Form1.spotPlaying == false)
-            {
                 // Variables
                 string recognized = "\n" + Cosmo.Form1._Form1.username + ": Play song";
                 string response = "\nBoB: Resumed song";
@@ -355,13 +358,10 @@ namespace Cosmo
                 exe.playPauseSong();
                 // Variable Manager 
                 var.VarManager("playSong");
-            }
         }
 
         public void pauseSong()
         {
-            if (Cosmo.Form1._Form1.spotPlaying == true)
-            {
                 // Variables
                 string recognized = "\n" + Cosmo.Form1._Form1.username + ": Pause song";
                 string response = "\nBoB: Paused song";
@@ -377,7 +377,7 @@ namespace Cosmo
                 exe.playPauseSong();
                 // Variable Manager 
                 var.VarManager("playSong");
-            }
+        
         }
 
         public void enableMasterControls()
@@ -423,45 +423,5 @@ namespace Cosmo
                 var.VarManager("disableMasterControls");
             }
         }
-
-        public void spotifyIsPlaying()
-        {
-            if (Cosmo.Form1._Form1.MasterControls == true)
-            {
-                // Variables
-                string recognized = "\n" + Cosmo.Form1._Form1.username + ": Spotify is playing";
-                string response = "\nBoB: Adjusted variables";
-                string addLine = "\n";
-                string synthesize = "Adjusted Variables";
-                // Adding to Console
-                exe.textAdd(ref recognized);
-                exe.textAdd(ref response);
-                exe.textAdd(ref addLine);
-                // Synthesize
-                exe.synth(ref synthesize);
-                // Variable Manager 
-                var.VarManager("spotifyIsPlaying");
-            }
-        }
-
-        public void spotifyIsPaused()
-        {
-            if (Cosmo.Form1._Form1.MasterControls == true)
-            {
-                // Variables
-                string recognized = "\n" + Cosmo.Form1._Form1.username + ": Spotify is paused";
-                string response = "\nBoB: Adjusted variables";
-                string addLine = "\n";
-                string synthesize = "Adjusted Variables";
-                // Adding to Console
-                exe.textAdd(ref recognized);
-                exe.textAdd(ref response);
-                exe.textAdd(ref addLine);
-                // Synthesize
-                exe.synth(ref synthesize);
-                // Variable Manager 
-                var.VarManager("spotifyIsPaused");
-            }
-        }
-    }   
+    }
 }
